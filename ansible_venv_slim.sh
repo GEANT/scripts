@@ -70,7 +70,7 @@ pip install ansible-core==${ansible_core_version}
 
 # Next we install the corresponding collections
 if ! all_collections=$(curl --fail --silent ${all_collections_url}); then
-  echo "Failed fetching collections file from $all_collections_url}, exiting"
+  echo "Failed fetching collections file from ${all_collections_url}, exiting"
   exit 1
 fi
 
