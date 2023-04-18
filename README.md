@@ -15,7 +15,8 @@ the collections?
 This script will sort that out for you, based on two things:
 
 * The version of the 'fat' `ansible` package. Default: `7.4.0`
-* A regular expression that matches the required collection names. Default: `^(ansible.(posix|utils)|community.general)$`
+* A regular expression that matches the required collection names.
+  Default: `^(ansible.(posix|utils)|community.general)$`
 
 ### Requirements
 
