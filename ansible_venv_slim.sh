@@ -42,7 +42,7 @@ if [[ -z "${VIRTUAL_ENV}" ]]; then
 fi
 
 for i in wget jq yq; do
-  if ! command -v ${i} $>/dev/null; then
+  if ! command -v ${i} &>/dev/null; then
     echo "No ${i} command available, please install"
     exit 1
   fi
