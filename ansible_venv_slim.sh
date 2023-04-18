@@ -46,7 +46,7 @@ if ! pip show yq >/dev/null 2>&1; then
   exit 1
 fi
 
-if ! command wget; then
+if ! command -v wget $>/dev/null; then
   echo "No wget found, please install that"
   exit 1
 fi
