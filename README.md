@@ -53,8 +53,8 @@ COLLECTIONS_PATTERN='^(amazon.aws|ansible.(netcommon|posix|utils)|community.(aws
 
 Example using the defaults:
 
-```sh
-(venv) vagrant@bookworm:~/scripts$ ./ansible_venv_slim.sh 
+```
+(venv) vagrant@bookworm:~/scripts$ ./ansible_venv_slim.sh
 Instead of fat ansible version 7.4.0, now only installing corresponding ansible-core version 2.14.4
 Collecting ansible-core==2.14.4
   Using cached ansible_core-2.14.4-py3-none-any.whl (2.2 MB)
@@ -110,9 +110,9 @@ Done. Confirming installed collections:
 # /home/vagrant/scripts/venv/lib/python3.11/site-packages/ansible_collections
 Collection        Version
 ----------------- -------
-ansible.posix     1.5.1  
-ansible.utils     2.9.0  
-community.general 6.5.0  
+ansible.posix     1.5.1
+ansible.utils     2.9.0
+community.general 6.5.0
 ```
 
 The collection size is now:
@@ -185,6 +185,7 @@ ansible`:
 406M	total
 ```
 
-### BUGS
+### BUGS/TODO
 
 * Only works for ansible 5+
+* Use python version in deps and check if venv python satisfies that
