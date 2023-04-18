@@ -15,9 +15,10 @@ set -o pipefail
 
 # A good way to start with a minimal venv:
 #
+# sudo apt-get install python3-venv jq yq wget
 # python3 -m venv venv
 # . venv/bin/activate
-# pip install -U pip wheel yq
+# pip install -U pip wheel
 #
 # And then run this script.
 # Override the defaults using environment vars, for example:
@@ -27,12 +28,12 @@ set -o pipefail
 
 
 # Fat ansible version
-ANSIBLE_VERSION="${ANSIBLE_VERSION:-7.2.0}"
+ANSIBLE_VERSION="${ANSIBLE_VERSION:-7.4.0}"
 
 # Regex pattern to match the ansible collection names that we need.
 # NOTE: this may need tweaking for different major releases, are things come
 # and go.
-COLLECTIONS_PATTERN="${COLLECTIONS_PATTERN:-^(ansible.(posix|utils)|community.(crypto|general))$}"
+COLLECTIONS_PATTERN="${COLLECTIONS_PATTERN:-^(ansible.(posix|utils)|community.general)$}"
 
 
 if [[ -z "${VIRTUAL_ENV}" ]]; then
