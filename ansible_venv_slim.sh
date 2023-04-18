@@ -46,6 +46,11 @@ if ! pip show yq >/dev/null 2>&1; then
   exit 1
 fi
 
+if ! command wget; then
+  echo "No wget found, please install that"
+  exit 1
+fi
+
 # This is just a single digit (5, 6, etc)
 ansible_main_version="${ANSIBLE_VERSION/.*/}"
 
@@ -57,7 +62,7 @@ all_collections_url="${fat_base_url}.yaml"
 
 # First we install the correct ansible-core version
 # This is listed in the deps URL
-if ! ansible_core_version=$(curl -s "${all_deps_url}" | sed -n -E 's/^_ansible_core_version: //p'); then
+if ! ansible_core_version=$(wget -qO -"${all_deps_url}" | sed -n -E 's/^_ansible_core_version: //p'); then
   echo "Failed fetching the ansible-core version from ${all_deps_url}, exiting"
   exit 1
 fi
@@ -69,7 +74,7 @@ pip install ansible-core==${ansible_core_version}
 
 
 # Next we install the corresponding collections
-if ! all_collections=$(curl --fail --silent ${all_collections_url}); then
+if ! all_collections=$(wget -qO /dev/null ${all_collections_url}); then
   echo "Failed fetching collections file from ${all_collections_url}, exiting"
   exit 1
 fi
