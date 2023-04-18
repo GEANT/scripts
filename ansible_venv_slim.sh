@@ -46,10 +46,13 @@ if ! pip show yq >/dev/null 2>&1; then
   exit 1
 fi
 
-if ! command -v wget $>/dev/null; then
-  echo "No wget found, please install that"
-  exit 1
-fi
+for i in wget jq; do
+  if ! command -v ${i} $>/dev/null; then
+    echo "No ${i} command available, please install that"
+    exit 1
+  fi
+done
+
 
 # This is just a single digit (5, 6, etc)
 ansible_main_version="${ANSIBLE_VERSION/.*/}"
@@ -74,7 +77,7 @@ pip install ansible-core==${ansible_core_version}
 
 
 # Next we install the corresponding collections
-if ! all_collections=$(wget -qO /dev/null ${all_collections_url}); then
+if ! all_collections=$(wget -qO - "${all_collections_url}"); then
   echo "Failed fetching collections file from ${all_collections_url}, exiting"
   exit 1
 fi
