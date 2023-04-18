@@ -62,7 +62,7 @@ all_collections_url="${fat_base_url}.yaml"
 
 # First we install the correct ansible-core version
 # This is listed in the deps URL
-if ! ansible_core_version=$(wget -qO -"${all_deps_url}" | sed -n -E 's/^_ansible_core_version: //p'); then
+if ! ansible_core_version=$(wget -qO - "${all_deps_url}" | sed -n -E 's/^_ansible_core_version: //p'); then
   echo "Failed fetching the ansible-core version from ${all_deps_url}, exiting"
   exit 1
 fi
