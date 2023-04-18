@@ -41,15 +41,9 @@ if [[ -z "${VIRTUAL_ENV}" ]]; then
   exit 1
 fi
 
-if ! pip show yq >/dev/null 2>&1; then
-  echo "No 'yq' found, please install it in this virtualenv (pip3 install yq)"
-  echo "exiting"
-  exit 1
-fi
-
-for i in wget jq; do
+for i in wget jq yq; do
   if ! command -v ${i} $>/dev/null; then
-    echo "No ${i} command available, please install that"
+    echo "No ${i} command available, please install"
     exit 1
   fi
 done

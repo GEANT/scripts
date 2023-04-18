@@ -19,9 +19,23 @@ This script will sort that out for you, based on two things:
 
 ### Requirements
 
-* An activate python3 virtualenv
+* An activated python3 virtualenv
 * `wget`
 * `jq`
+* `yq`
+
+On the Debian family this should be sufficient:
+
+
+```sh
+sudo apt-get update
+sudo apt-get install -y wget git python3-venv yq
+git clone https://github.com/GEANT/scripts.git
+cd scripts
+python3 -m venv venv
+. venv/bin/activate
+pip install -U wheel pip
+```
 
 ### Usage
 
